@@ -41,7 +41,7 @@ class VirtualPet2Test {
 		underTest.setHunger(1);
 
 		int beforeEat = underTest.getHunger(); //1
-		underTest.eat();
+		underTest.feed();
 		int result = underTest.getHunger();
 		// Assert
 		assertEquals(beforeEat - 1, result);
@@ -73,7 +73,7 @@ class VirtualPet2Test {
 	public void hungerShouldNotDecreaseBelow0() {
 		// Act
 		int result = underTest.getHunger();
-		underTest.eat();
+		underTest.feed();
 		// Assert
 		assertEquals(0, result);
 	}
@@ -97,11 +97,31 @@ class VirtualPet2Test {
 	}
 
 	@Test
-	public void hungerShouldIncreaseBy1AfterTick() {
+	public void tickShouldIncreaseHungerBy1() {
 		// Act
 		int beforeTick = underTest.getHunger();
 		underTest.tick(); 
 		int afterTick = underTest.getHunger();
+		// Assert
+		assertEquals(beforeTick, afterTick - 1);
+	}
+	
+	@Test
+	public void tickShouldIncreaseThirstBy1() {
+		// Act
+		int beforeTick = underTest.getThirst();
+		underTest.tick(); 
+		int afterTick = underTest.getThirst();
+		// Assert
+		assertEquals(beforeTick, afterTick - 1);
+	}
+	
+	@Test
+	public void tickShouldIncreaseBoredomBy1() {
+		// Act
+		int beforeTick = underTest.getBoredom();
+		underTest.tick(); 
+		int afterTick = underTest.getBoredom();
 		// Assert
 		assertEquals(beforeTick, afterTick - 1);
 	}
@@ -126,4 +146,33 @@ class VirtualPet2Test {
 		assertEquals(1, result);
 	}
 
+	@Test
+	public void ConstructorCreatesBoredomAt1() {
+		//Arrange
+		VirtualPet2 underTestConstructor = new VirtualPet2(0,0,1);
+		//Act
+		int result = underTestConstructor.getBoredom();
+		//Assert
+		assertEquals(1, result);
+	}
+
+	@Test
+	public void ConstructorCreatesNameMike() {
+		//Arrange
+		VirtualPet2 underTestConstructor = new VirtualPet2("mike","");
+		//Act
+		String result = underTestConstructor.getName();
+		//Assert
+		assertTrue(result.equals("mike"));
+	}
+
+	@Test
+	public void ConstructorCreatesDescriptionCrazyCat() {
+		//Arrange
+		VirtualPet2 underTestConstructor = new VirtualPet2("","Crazy Cat");
+		//Act
+		String result = underTestConstructor.getDescription();
+		//Assert
+		assertTrue(result.equals("Crazy Cat"));
+	}
 }
