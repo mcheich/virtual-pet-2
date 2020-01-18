@@ -105,5 +105,25 @@ class VirtualPet2Test {
 		// Assert
 		assertEquals(beforeTick, afterTick - 1);
 	}
+	
+	@Test
+	public void ConstructorCreatesHungerAt1() {
+		//Arrange
+		VirtualPet2 underTestConstructor = new VirtualPet2(1,0,0);
+		//Act
+		int result = underTestConstructor.getHunger();
+		//Assert
+		assertEquals(1, result);
+	}
+
+	@Test
+	public void ConstructorCreatesThirstAt1() {
+		//Arrange
+		VirtualPet2 underTestConstructor = new VirtualPet2(0,1,0);
+		//Act
+		int result = underTestConstructor.getThirst();
+		//Assert
+		assertEquals(1, result);
+	}
 
 }

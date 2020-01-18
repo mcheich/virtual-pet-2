@@ -7,6 +7,16 @@ public class VirtualPet2 {
 	private int boredom = 0;
 
 
+	public VirtualPet2() {
+	
+	}
+
+	public VirtualPet2(int hunger, int thirst, int boredom) {
+		this.hunger = hunger;
+		this.thirst = thirst;
+		this.boredom = boredom;
+	}
+
 	public int getHunger() {
 		return this.hunger;
 	}
