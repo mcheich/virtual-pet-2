@@ -39,7 +39,6 @@ class VirtualPet2Test {
 	public void hungerShouldDecreaseBy1AfterEat() {
 		// Act
 		underTest.setHunger(1);
-
 		int beforeEat = underTest.getHunger(); //1
 		underTest.feed();
 		int result = underTest.getHunger();
